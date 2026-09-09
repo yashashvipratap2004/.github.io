@@ -568,3 +568,174 @@ body {
     color: #111111;
     background: rgba(0, 0, 0, 0.06);
 }
+
+/* ===================================================
+   8. Mobile & Tablet Responsiveness (Max-Width: 768px)
+   =================================================== */
+
+@media (max-width: 768px) {
+    /* Release rigid full-screen locks so content scrolls naturally */
+    body {
+        scroll-snap-type: none;
+    }
+
+    .slide-section {
+        min-height: auto;
+        height: auto;
+        scroll-snap-align: none;
+        padding: 24px 20px 40px 20px;
+        overflow: visible;
+    }
+
+    /* 1. Navbar Adjustments */
+    .navbar {
+        padding: 10px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .nav-status {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    .nav-links {
+        order: 2;
+    }
+
+    .nav-links .nav-item {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .nav-button {
+        order: 1;
+        padding: 4px 4px 4px 14px;
+        font-size: 13px;
+    }
+
+    .nav-button .btn-circle {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* 2. Hero Section */
+    .hero-wrapper {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .hero-badge {
+        font-size: 11px;
+        text-align: center;
+        padding: 6px 12px;
+    }
+
+    .massive-title {
+        font-size: clamp(48px, 14vw, 80px);
+        margin-bottom: 24px;
+    }
+
+    .hero-details {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 28px;
+    }
+
+    .left-info {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-tagline {
+        font-size: 14px;
+    }
+
+    .left-info a.primary-btn {
+        justify-content: center;
+    }
+
+    .right-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* 3. Selected Work Grid */
+    .work-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+        gap: 20px;
+    }
+
+    .work-filters {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .work-filters .view-all {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .card-image {
+        height: 200px;
+    }
+
+    /* 4. Experience Section */
+    .exp-card {
+        padding: 30px 20px;
+    }
+
+    .exp-none {
+        font-size: 44px;
+    }
+
+    .exp-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    /* 5. Footer Slide */
+    .footer-slide {
+        padding: 50px 20px 30px 20px;
+    }
+
+    .footer-heading {
+        font-size: clamp(32px, 8vw, 44px);
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .footer-meta {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    /* 6. Floating Navigation Capsule on Mobile */
+    .floating-pill-nav {
+        top: auto;
+        bottom: 20px; /* Keep pill easily tappable near the bottom on phones */
+        transform: translate(-50%, 100px);
+    }
+
+    .floating-pill-nav.show {
+        transform: translate(-50%, 0);
+    }
+
+    .float-item {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
