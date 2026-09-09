@@ -570,71 +570,69 @@ body {
 }
 
 /* ===================================================
-   8. Mobile & Tablet Responsiveness (Max-Width: 768px)
+   8. Clean Mobile Optimization (Max-Width: 768px)
    =================================================== */
 
 @media (max-width: 768px) {
-    /* Release rigid full-screen locks so content scrolls naturally */
+    /* Keep smooth natural scroll without rigid snapping issues */
     body {
         scroll-snap-type: none;
     }
 
     .slide-section {
-        min-height: auto;
-        height: auto;
-        scroll-snap-align: none;
-        padding: 24px 20px 40px 20px;
-        overflow: visible;
+        min-height: 100dvh; /* Fill phone screen cleanly */
+        padding: 16px 20px 32px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    /* 1. Navbar Adjustments */
+    /* 1. Slim Header on Mobile */
     .navbar {
-        padding: 10px 16px;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
+        padding: 8px 14px;
+        border-radius: 999px;
+        justify-content: space-between;
+    }
+
+    /* Keep only status and Let's Talk button at the top on phone */
+    .navbar .nav-links {
+        display: none; 
     }
 
     .nav-status {
-        width: 100%;
-        text-align: center;
-        font-size: 12px;
-    }
-
-    .nav-links {
-        order: 2;
-    }
-
-    .nav-links .nav-item {
-        padding: 6px 12px;
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .nav-button {
-        order: 1;
-        padding: 4px 4px 4px 14px;
-        font-size: 13px;
+        padding: 4px 4px 4px 12px;
+        font-size: 12px;
+        gap: 8px;
     }
 
     .nav-button .btn-circle {
-        width: 28px;
-        height: 28px;
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
     }
 
-    /* 2. Hero Section */
+    /* 2. Hero Typography & Links */
     .hero-wrapper {
-        margin-top: 40px;
-        margin-bottom: 30px;
+        margin: auto 0;
+        width: 100%;
+        text-align: center;
     }
 
     .hero-badge {
-        font-size: 11px;
-        text-align: center;
+        font-size: 10px;
+        letter-spacing: 1px;
         padding: 6px 12px;
+        margin-bottom: 16px;
     }
 
     .massive-title {
-        font-size: clamp(48px, 14vw, 80px);
+        font-size: clamp(40px, 12vw, 64px);
+        line-height: 0.95;
+        letter-spacing: -1.5px;
         margin-bottom: 24px;
     }
 
@@ -642,7 +640,8 @@ body {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 28px;
+        gap: 20px;
+        width: 100%;
     }
 
     .left-info {
@@ -651,59 +650,61 @@ body {
     }
 
     .hero-tagline {
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 12px;
     }
 
     .left-info a.primary-btn {
         justify-content: center;
+        font-size: 13px;
     }
 
     .right-info {
         flex-direction: row;
-        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
+        flex-wrap: wrap;
         gap: 8px;
         width: 100%;
     }
 
-    /* 3. Selected Work Grid */
+    .social-pill {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+
+    /* 3. Selected Work Cards */
+    .selected-work {
+        min-height: auto;
+        padding-top: 60px;
+    }
+
     .work-grid {
-        grid-template-columns: 1fr; /* Stack cards vertically */
+        grid-template-columns: 1fr;
         gap: 20px;
-    }
-
-    .work-filters {
-        flex-wrap: wrap;
-        gap: 14px;
-    }
-
-    .work-filters .view-all {
-        margin-left: 0;
-        width: 100%;
+        margin-top: 15px;
     }
 
     .card-image {
-        height: 200px;
+        height: 180px;
     }
 
-    /* 4. Experience Section */
+    /* 4. Experience & Footer */
+    .experience-slide {
+        min-height: auto;
+        padding: 60px 20px 40px 20px;
+    }
+
     .exp-card {
         padding: 30px 20px;
     }
 
     .exp-none {
-        font-size: 44px;
+        font-size: 52px;
     }
 
-    .exp-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-
-    /* 5. Footer Slide */
     .footer-slide {
+        min-height: 100dvh;
         padding: 50px 20px 30px 20px;
     }
 
@@ -713,20 +714,14 @@ body {
 
     .footer-bottom {
         flex-direction: column;
-        align-items: center;
-        gap: 16px;
+        gap: 14px;
         text-align: center;
     }
 
-    .footer-meta {
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    /* 6. Floating Navigation Capsule on Mobile */
+    /* 5. Floating Capsule (Tappable navigation pinned nicely at bottom on mobile) */
     .floating-pill-nav {
         top: auto;
-        bottom: 20px; /* Keep pill easily tappable near the bottom on phones */
+        bottom: 20px;
         transform: translate(-50%, 100px);
     }
 
@@ -735,7 +730,7 @@ body {
     }
 
     .float-item {
-        padding: 6px 12px;
+        padding: 6px 14px;
         font-size: 12px;
     }
 }
