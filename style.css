@@ -629,22 +629,25 @@ body {
         margin-bottom: 16px;
     }
 
-   .massive-title {
-        /* Dropped the minimum size slightly so long names don't overflow */
-        font-size: clamp(32px, 11vw, 54px); 
-        /* Increased line-height to prevent vertical clipping */
-        line-height: 1.05; 
-        /* Eased up on the negative spacing */
-        letter-spacing: -0.5px; 
+   @media (max-width: 768px) {
+    /* ... your other mobile CSS ... */
+
+    .massive-title {
+        /* Adjusted the max-size so the 9-letter word fits safely */
+        font-size: clamp(32px, 10vw, 48px); 
+        line-height: 1;
+        /* THIS is the crucial fix: resets the desktop negative spacing */
+        letter-spacing: 0px; 
         margin-bottom: 24px;
-        /* Ensures text wraps gracefully on very tiny screens */
-        word-break: break-word; 
     }
 
-    /* Add this inside the media query to thin out the stroke on mobile */
+    /* Add this rule to thin the stroke on phone screens */
     .outline-text {
         -webkit-text-stroke: 1px #1a1a1a; 
     }
+
+    /* ... rest of your mobile CSS ... */
+}
     .hero-details {
         flex-direction: column;
         align-items: center;
