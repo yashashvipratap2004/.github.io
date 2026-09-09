@@ -160,11 +160,13 @@
         <a href="#contact" class="float-item">Contact</a>
     </div>
 
-    <!-- Toggle Floating Nav Visibility on Scroll -->
+   <!-- Script: Floating Nav Visibility & Smooth Keyboard Navigation -->
     <script>
         const heroSection = document.getElementById('hero');
         const floatingNav = document.getElementById('floatingNav');
+        const sections = Array.from(document.querySelectorAll('.slide-section'));
 
+        // 1. Floating pill visibility toggle
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -176,6 +178,32 @@
         }, { threshold: 0.35 });
 
         observer.observe(heroSection);
+
+        // 2. Keyboard Navigation Support (PageUp, PageDown, Up/Down Arrows, Spacebar)
+        window.addEventListener('keydown', (e) => {
+            const keysToHandle = ['PageDown', 'PageUp', 'ArrowDown', 'ArrowUp', ' '];
+            if (!keysToHandle.includes(e.key)) return;
+
+            // Find the slide currently closest to the top of viewport
+            const currentIdx = sections.findIndex(sec => {
+                const rect = sec.getBoundingClientRect();
+                return rect.top >= -100 && rect.top <= window.innerHeight / 2;
+            });
+
+            if (currentIdx === -1) return;
+
+            if (e.key === 'PageDown' || e.key === 'ArrowDown' || (e.key === ' ' && !e.shiftKey)) {
+                if (currentIdx < sections.length - 1) {
+                    e.preventDefault();
+                    sections[currentIdx + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'PageUp' || e.key === 'ArrowUp' || (e.key === ' ' && e.shiftKey)) {
+                if (currentIdx > 0) {
+                    e.preventDefault();
+                    sections[currentIdx - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
     </script>
 </body>
 </html>
